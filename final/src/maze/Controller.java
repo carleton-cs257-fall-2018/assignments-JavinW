@@ -1,25 +1,68 @@
 package maze;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import java.util.Timer;
+import java.util.TimerTask;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.animation.KeyFrame;
+import javafx.util.Duration;
 
 public class Controller implements EventHandler<KeyEvent> {
+    //final private double FRAMES_PER_SECOND = 20.0;
+
     @FXML private Label scoreLabel;
     @FXML private Label messageLabel;
     @FXML private Label movesLabel;
     @FXML private MazeView mazeView;
     private MazeModel mazeModel;
-
+    private Timer timer;
+    private Timeline timeline = new Timeline();
+    private int timeRemaining;
     public Controller() {
     }
 
     public void initialize() {
         this.mazeModel = new MazeModel(this.mazeView.getRowCount(), this.mazeView.getColumnCount());
+        this.startTimer();
         this.update();
     }
+
+    public void startTimer() {
+        this.timeRemaining = 15;
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println(timeRemaining);
+                timeRemaining--;
+            }
+        }));
+    }
+//    private void startTimer() {
+//        this.timer = new java.util.Timer();
+//        TimerTask timerTask = new TimerTask() {
+//            public void run() {
+//                Platform.runLater(new Runnable() {
+//                    public void run() {
+//                        updateAnimation();
+//                    }
+//                });
+//            }
+//        };
+//
+//        long frameTimeInMilliseconds = (long)(1000.0 / FRAMES_PER_SECOND);
+//        this.timer.schedule(timerTask, 0, frameTimeInMilliseconds);
+//    }
+
+//    private void updateAnimation() {
+//
+//    }
 
     public double getBoardWidth() {
         return MazeView.CELL_WIDTH * this.mazeView.getColumnCount();
@@ -33,6 +76,7 @@ public class Controller implements EventHandler<KeyEvent> {
         this.mazeView.update(this.mazeModel);
         this.scoreLabel.setText(String.format("Score: %d", this.mazeModel.getScore()));
         this.movesLabel.setText(String.format("# of Moves: %d", this.mazeModel.getNumMoves()));
+        this.messageLabel.setText(String.format("Time remaining: %d", this.timeRemaining));
         if (this.mazeModel.isGameOver()) {
             this.messageLabel.setText("Game Over");
         }
@@ -58,6 +102,8 @@ public class Controller implements EventHandler<KeyEvent> {
 
         } else if (code == KeyCode.LEFT) {
             this.mazeModel.moveRunnerBy(0, -1);
+        } else if (code == KeyCode.S) {
+            this.mazeModel.autoSolve();
         }
 //    }
 //        System.out.println(code);

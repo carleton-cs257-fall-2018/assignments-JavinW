@@ -9,7 +9,7 @@
         <BorderPane prefHeight="35" style="-fx-background-color: #74eb1a; -fx-padding: 10px, 5px, 10px, 5px" >
             <left><Label fx:id="scoreLabel" style="-fx-font-size: 150%; -fx-text-fill: black" /></left>
             <center><Label fx:id="movesLabel" style="-fx-font-size: 150%; -fx-text-fill: black" /></center>
-            <right><Label fx:id="messageLabel" style="-fx-font-size: 150%; -fx-text-fill: black"/></right>
+            <right><Label fx:id="messageLabel" style="-fx-font-size: 150%; -fx-text-fill: red"/></right>
         </BorderPane>
     </top>
 
@@ -19,9 +19,14 @@
 
     <bottom>
         <HBox prefHeight="35" style="-fx-padding: 10px, 5px, 10px, 5px; -fx-background-color: #74eb1a">
-            <Label style="-fx-font-size: 140%; -fx-text-fill: black"
-                   text="Use the arrow keys to navigate the maze"/>
+            <Label style="-fx-font-size: 100%; -fx-text-fill: black"
+                   text="Use the arrow keys to navigate the maze. Press S for the solution."/>
+
             <!--text="Help: ? / Teleport: T / Stay: S / Move: W E D C X Z A / New game: G" />-->
         </HBox>
+        <!--<HBox prefHeight="35" style="-fx-padding: 10px, 5px, 10px, 5px; -fx-background-color: #74eb1a">-->
+        <!--<Label style="-fx-font-size: 140%; -fx-text-fill: black"-->
+               <!--text="Press S to see the solution"/>-->
+        <!--</HBox>-->
     </bottom>
 </BorderPane>

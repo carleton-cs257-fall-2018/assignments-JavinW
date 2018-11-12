@@ -53,7 +53,7 @@ public class MazeView extends Group {
     }
 
     private void initializeGrid() throws FileNotFoundException {
-        Image maze = new Image(new FileInputStream("/Users/javin/Desktop/assignments-JavinW/final/src/maze/MazePicture.png"));
+        Image maze = new Image(new FileInputStream(System.getProperty("user.dir") + "/src/maze/MazePicture.png"));
         //Setting the image view
         ImageView mazeImage = new ImageView(maze);
 
@@ -126,7 +126,7 @@ public class MazeView extends Group {
                 if (cellValue == MazeModel.CellValue.RUNNER) {
                     this.cellViews[row][column].setFill(Color.PURPLE);
                 } else {
-                    this.cellViews[row][column].setFill(Color.WHITE);
+                    this.cellViews[row][column].setFill(Color.LIGHTGRAY);
                 }
             }
         }

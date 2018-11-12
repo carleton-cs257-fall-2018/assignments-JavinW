@@ -3,18 +3,24 @@ package maze;
 import java.io.FileNotFoundException;
 import java.io.File;
 import java.util.Scanner;
+import javafx.animation.Timeline;
+import javafx.animation.KeyFrame;
+import javafx.util.Duration;
 
 public class MazeModel {
 
     public enum CellValue {
         EMPTY, RUNNER
     };
-
+    private static final Integer STARTTIME = 15;
+    private Timeline timeline;
+    private Integer timeSeconds = STARTTIME;
     private boolean gameOver;
     private int score;
     private int numMoves;
     private int level;
     private int[][] validMove = new int[31][33];
+    private int[][] winningSequence = new int[29][2];
 
     // Note that runnerRow, runnerColumn, and dalekCount are all redundant with
     // the contents of cells, so we have to be careful throughout to keep them
@@ -35,12 +41,26 @@ public class MazeModel {
         //this.level = 1;
         this.numMoves = 0;
         this.initializeLevel();
+        //this.initializeTimer();
         try {
             this.initializeCollisionTracker();
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
+        try {
+            this.initializeAutoSolve();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        }
     }
+
+//    private void initializeTimer() {
+//
+//    }
+
+//    public String getTimeRemaining() {
+//        return this.timeSeconds.toString();
+//    }
 
     public int getNumMoves() {
         return this.numMoves;
@@ -85,8 +105,8 @@ public class MazeModel {
 //        }
     }
 
-    public void initializeCollisionTracker() throws FileNotFoundException {
-        Scanner readFile = new Scanner(new File("/Users/javin/Desktop/assignments-JavinW/final/src/maze/mazeLayout.txt"));
+    private void initializeCollisionTracker() throws FileNotFoundException {
+        Scanner readFile = new Scanner(new File(System.getProperty("user.dir") + "/src/maze/mazeLayout.txt"));
         int row = 0;
         while (readFile.hasNextLine()) {
             readFile.useDelimiter(",|\\n");
@@ -98,6 +118,19 @@ public class MazeModel {
         }
     }
 
+    private void initializeAutoSolve() throws FileNotFoundException {
+       // Scanner readFile = new Scanner(new File("/Users/javin/Desktop/assignments-JavinW/final/src/maze/winningSequence.txt"));
+        Scanner readFile = new Scanner(new File(System.getProperty("user.dir") + "/src/maze/winningSequence.txt"));
+        int row = 0;
+        while (readFile.hasNextLine()) {
+            readFile.useDelimiter(",|\\n");
+            for (int column = 0; column < 2; column++) {
+                int move = readFile.nextInt();
+                winningSequence[row][column] = move;
+            }
+            row++;
+        }
+    }
 
     public int getRowCount() {
         return this.cells.length;
@@ -149,6 +182,20 @@ public class MazeModel {
         }
     }
 
+    public void autoSolve(){
+        this.cells[this.runnerRow][this.runnerColumn] = CellValue.EMPTY;
+        //this.cells[winningSequence[0]][winningSequence[0]] = CellValue.RUNNER;
+        //System.out.println(winningSequence[0][0]);
+        for (int row = 0; row < 29; row++) {
+            for (int column = 0; column < 1; column++) {
+                this.cells[winningSequence[row][column]][winningSequence[row][column+1]] = CellValue.RUNNER;
+            }
+        }
+        this.runnerRow = 13;
+        this.runnerColumn = 15;
+        checkGameOver();
+    }
+
     public boolean checkGameOver() {
         if (this.runnerRow == 13 && this.runnerColumn == 15) {
             this.gameOver = true;
@@ -158,8 +205,10 @@ public class MazeModel {
     }
 
     public void calculateFinalScore() {
+        //will be changed when the timer works
         this.score = this.score + 10;
     }
+
     public boolean trackCollision(int rowChange, int columnChange) {
         boolean valid;
         int currRow = this.runnerRow;
