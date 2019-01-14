@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}" />
+    <script>var api_port = {{ api_port }};</script>
+    <script type="text/javascript" src="{{ url_for('static', filename='site.js') }}" defer></script>
+    <title>Search Police Killings</title>
+  </head>
+  <body onload="onDateTabClicked()">
+  <header><h1>Who Died</h1></header>
+  <div id="main">
+    <article>
+
+      <p>Search a month for the names of and what day people were killed in that month:</p>
+      <hr>
+
+      <input type="search" id="getDate" placeholder="Enter a month (i.e. January)">
+    	<button onclick="getDate()">Search</button>
+    	<p id="search"></p>
+		<p><table id="results_table"></table></p>
+
+
+    </article>
+    <nav class="main-nav">
+    <ul>
+      <li><a href='/'>Home</a></li>
+      <li><a href='/name/'>Name</a></li>
+      <li><a href="/age/">Age</a></li>
+      <li><a href="/race/">Race</a></li>
+      <li><a href="/date/"  class='active-page'>Date</a></li>
+      <li><a href="/city/">City</a></li>
+      <li><a href="/state/">State</a></li>
+      <li><a href="/donations/">Donations</a></li>
+    </ul>
+    </nav>
+  </div>
+  <footer>
+    <p>
+    By Kellen and Javin.
+    Created for Software Design.
+    </p> <p>Managed by Carleton.perlman.mathcs</p>
+  </footer>
+</body>
+</html>

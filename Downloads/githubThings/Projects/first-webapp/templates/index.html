@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}" />
+    <script>var api_port = {{ api_port }};</script>
+    <script type="text/javascript" src="{{ url_for('static', filename='site.js') }}" defer></script>
+    <title>Search Police Killings</title>
+  </head>
+  <body>
+  <header><h1>Who Died</h1></header>
+  <div id="main">
+    <article>
+
+      <h1>About this site</h1>
+      <hr>
+      <p>
+        This site is used to search a chunk of data about people killed by police
+        in the United States of America. All of our current data is from the year 2015.
+      </p>
+     
+
+    </article>
+    <nav class="main-nav">
+    <ul>
+    <li><a href='/'  class='active-page'>Home</a></li>
+      <li><a href='/name/'>Name</a></li>
+      <li><a href="/age/">Age</a></li>
+      <li><a href="/race/">Race</a></li>
+      <li><a href="/date/">Date</a></li>
+      <li><a href="/city/">City</a></li>
+      <li><a href="/state/">State</a></li>
+      <li><a href="/donations/">Donations</a></li>
+    </ul>
+   <!-- 
+ <form action="/result.html">
+      <input type="search" placeholder="Search">
+      <button>Go</button>
+    </form>
+ -->
+    </nav>
+  </div>
+  <footer>
+    <p>
+    By Kellen and Javin.
+    Created for Software Design.
+    </p> <p>Managed by Carleton.perlman.mathcs</p>
+  </footer>
+</body>
+</html>

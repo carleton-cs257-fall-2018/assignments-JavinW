@@ -1,0 +1,4 @@
+﻿name,age,gender,raceethnicity,month,day,year,streetaddress,city,state,latitude,longitude,lawenforcementagency,cause,armed
+Alexander Long,31,Male,White,February,25,2015,25th St and Poplar St,Terre Haute ,IN,39.4629302,-87.3788602,Terre Haute Police Department ,Gunshot,Firearm
+John Quintero,23,Male,Hispanic/Latino,January,3,2015,500 North Oliver Ave,Wichita,KS,37.6939376,-97.2804936,Wichita Police Department,Gunshot,Knife
+Tyrone Ryerson,45,Male,Black,March,5,2015,468 E Plainfield Ave,Milwaukee,WI,42.9687729,-87.9034882,Milwaukee Police Department,Gunshot,Non-lethal firearm

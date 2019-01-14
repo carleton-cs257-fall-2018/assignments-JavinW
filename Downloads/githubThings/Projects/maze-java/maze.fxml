@@ -1,0 +1,26 @@
+<?import javafx.scene.layout.AnchorPane?><?import maze.MazeView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:controller="maze.Controller" xmlns:fx="http://javafx.com/fxml">
+    <top>
+        <BorderPane prefHeight="35" style="-fx-background-color: #74eb1a; -fx-padding: 10px, 5px, 10px, 5px" >
+            <left><Label fx:id="scoreLabel" style="-fx-font-size: 120%; -fx-text-fill: black" /></left>
+            <center><Label fx:id="movesLabel" style="-fx-font-size: 120%; -fx-text-fill: black" /></center>
+            <right><Label fx:id="messageLabel" style="-fx-font-size: 120%; -fx-text-fill: red"/></right>
+        </BorderPane>
+    </top>
+
+    <center>
+        <MazeView fx:id="mazeView" rowCount="15" columnCount="16" />
+    </center>
+
+    <bottom>
+        <HBox prefHeight="35" style="-fx-padding: 10px, 5px, 10px, 5px; -fx-background-color: #74eb1a">
+            <Label style="-fx-font-size: 100%; -fx-text-fill: black"
+                   text="Use the arrow keys to navigate the maze. Press S for the solution."/>
+        </HBox>
+    </bottom>
+</BorderPane>

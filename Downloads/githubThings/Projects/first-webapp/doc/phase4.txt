@@ -1,0 +1,182 @@
+phase4.txt
+
+Kellen Dorchen
+Javin White
+October 15, 2018
+
+CREATE TABLE person (
+	name TEXT,
+	age TEXT,
+	gender TEXT,
+	raceethnicity TEXT,
+	month TEXT,
+	day TEXT,
+	year TEXT,
+	streetaddress TEXT,
+	city TEXT,
+	state TEXT,
+	latitude TEXT,
+	longitude TEXT,
+	lawenforcementagency TEXT,
+	cause TEXT,
+	armed TEXT	 
+);
+
+SYNOPSIS: Get a list of all the people whose names match the name given.
+
+QUERY (GET): /people/person/<name>/
+
+RESPONSE: a list of dictionaries where each one describes one person matching the search 
+parameter.
+
+EXAMPLE: http://whodied.com/people/person/Washington
+
+[{'name': A'donte Washington, 'age': 16, 'gender': Male,'race/ethnicity': Black, 'month': February, 'day': 23, 'year': 2015, 'street_address': Clearview Ln, 'city': Millbrook, 'state': AL, 'latitude': 32.529577, 'longitude': -86.362829, 'law_enforcement_agency': Millbrook Police Department, 'cause': gunshot, 'armed': No},
+{'name': Javoris Washington, 'age': 29, 'gender': Male, 'race/ethnicity': Black, 'month': May, 'day': 21, 'year': 2015, 'street_address': SW 29th Ave and SW 29th Terrace, 'city': Fort Lauderdale, 'state': FL, 'latitude': 26.1071098,'longitude': -80.1828401, 'law_enforcement_agency': Fort Lauderdale Police Department, 'cause': Gunshot, 'armed': Unknown},
+{'name': Robert Washington, 'age': 37, 'gender': Male, 'race/ethnicity': Black, 'month': April, 'day': 1, 'year': 2015, 'street_address': 14200 Kornblum Ave, 'city': Hawthorne, 'state': CA, 'latitude': 33.9017922, 'longitude': -118.3373257, 'law_enforcement_agency': Hawthorne Police Department, 'cause': Gunshot, 'armed': No}]
+
+CREATE TABLE age (
+	age TEXT,
+	name TEXT,
+	gender TEXT,
+	raceethnicity TEXT,
+	month TEXT,
+	day TEXT,
+	year TEXT,
+	streetaddress TEXT,
+	city TEXT,
+	state TEXT,
+	latitude TEXT,
+	longitude TEXT,	
+	lawenforcementagency TEXT,
+	cause TEXT,
+	armed TEXT
+);
+
+SYNOPSIS: Get a list of all the people who died at the age given.
+
+QUERY (GET): /people/age/<age>/
+
+RESPONSE: a list of dictionaries where each one describes one person matching the age given.
+
+EXAMPLE: http://whodied.com/people/age/16
+
+[{'name': A'donte Washington, 'gender': Male, 'race/ethnicity': Black, 'month': February, 'day': 23, 'year': 2015, 'street_address': Clearview Ln, 'city': Millbrook, 'state': AL, 'latitude': 32.529577, 'longitude': -86.362829, 'law_enforcement_agency': Millbrook Police Department, 'cause': gunshot, 'armed': No},
+{'name': Jason Hendrix, 'gender': Male, 'race/ethnicity': White, 'month': February, 'day': 14, 'year': 2015, 'street_address': 1486 Hyde Park Rd, 'city': Essex, 'state': MD, 'latitude': 9.2983478, 'longitude': -76.4401614, 'law_enforcement_agency': Baltimore County Police Department, 'cause': Gunshot, 'armed': Firearm},
+{'name': Kendre Alston, 'gender': Male, 'race/ethnicity': Black, 'month': March, 'day': 19, 'year': 2015, 'street_address': 1800 Helena St, 'city': Jacksonville, 'state': FL, 'latitude': 30.3778403, 'longitude': -81.6836172, 'law_enforcement_agency': Jacksonville Sheriff's Office, 'cause': Gunshot, 'armed': Firearm}]
+
+CREATE TABLE city (
+	city TEXT,
+	name TEXT,
+	age TEXT,
+	gender TEXT,
+	raceethnicity TEXT,
+	month TEXT,
+	day TEXT,
+	year TEXT,
+	streetaddress TEXT,
+	state TEXT,
+	latitude TEXT,
+	longitude TEXT,
+	lawenforcementagency TEXT,
+	cause TEXT,
+	armed TEXT
+);
+
+SYNOPSIS: Get a list of all of the people who died in the city given.
+
+QUERY (GET): /people/city/<city_name>/
+
+RESPONSE: a list of dictionaries where each one describes one person who was killed on the given day.
+
+EXAMPLE: http://whodied.com/people/city/Rosenberg
+
+[{'name': Cody Karasek, 'age': 26, 'gender': Male, 'race/ethnicity': White, 'month': January, 'day': 28, 'year': 2015, 'street_address': 4100 Avenue I, 'state': TX, 'latitude': 29.5576077, 'longitude': -95.7844925, 'law_enforcement_agency': Rosenburg Police Department, 'cause': Gunshot, 'armed': Firearm}]
+
+CREATE TABLE state (
+	state TEXT,
+	name TEXT,
+	age TEXT,
+	gender TEXT,
+	raceethnicity TEXT,
+	month TEXT,
+	day TEXT,
+	year TEXT,
+	streetaddress TEXT,
+	city TEXT,
+	latitude TEXT,
+	longitude TEXT,
+	lawenforcementagency TEXT,
+	cause TEXT,
+	armed TEXT
+);
+
+SYNOPSIS: Get a list of all of the people who died in the given state.
+
+QUERY (GET): /people/state/<state_abbreviation>/
+
+RESPONSE: a list of dictionaries where each one describes one person who was killed in the given state.
+
+EXAMPLE: http://whodied.com/people/state/AK
+
+[{'name': John Whittaker, 'age': 33, 'gender': Male, 'race/ethnicity': Hispanic/Latino, 'month': February, 'day': 10, 'year': 2015, 'street_address': 1503 Medfra St, 'city': Anchorage, 'latitude': 61.2075577, 'longitude': -149.8582001, 'law_enforcement_agency': Anchorage Police Department, 'cause': Gunshot, 'armed': Knife},
+{'name': Larry Kobuk, 'age': 33, 'gender': Male, 'race/ethnicity': Native American, 'month': January, 'day': 28, 'year': 2015, 'street_address': "Corrections Department, 1400 E 4th Ave", 'city': Anchorage, 'latitude': 61.218408, 'longitude': -149.858016, 'law_enforcement_agency': Anchorage Corrections Department, 'cause': Death in custody, 'armed': Knife}]
+
+CREATE TABLE date (
+	month TEXT,
+	day TEXT,
+	name TEXT,
+	age TEXT,
+	gender TEXT,
+	raceethnicity TEXT,
+	year TEXT,
+	streetaddress TEXT,
+	city TEXT,
+	state TEXT,
+	latitude TEXT,
+	longitude TEXT,
+	lawenforcementagency TEXT,
+	cause TEXT,
+	armed TEXT	
+);
+
+SYNOPSIS: Get a list of people who were killed on a given date.
+
+QUERY (GET): /people/date/<month>/<day>/
+
+RESPONSE: a list of dictionaries where each one describes one person who was killed on the given date.
+
+EXAMPLE: http://whodied.com/people/date/February/14
+
+[{'name': Jason Hendrix, 'age': 16 'gender': Male, 'race/ethnicity': White, 'year': 2015, 'street_address': 1486 Hyde Park Rd, 'city': Essex, 'state': MD, 'latitude': 9.2983478, 'longitude': -76.4401614, 'law_enforcement_agency': Baltimore County Police Department, 'cause': Gunshot, 'armed': Firearm},
+{'name':Roy Day, 'age': 51, 'gender': Male, 'race/ethnicity': White, 'year': 2015, 'street_address': Gale St, 'city': Laredo, 'state': TX, 'latitude': 27.554155, 'longitude': -99.478091, 'law_enforcement_agency': Laredo Police Department, 'cause': Gunshot, 'armed': Knife}]
+
+CREATE TABLE raceethnicity (
+	raceethnicity TEXT,
+	name TEXT,
+	age TEXT,
+	gender TEXT,
+	month TEXT,
+	day TEXT,
+	year TEXT,
+	streetaddress TEXT,
+	city TEXT,
+	state TEXT,
+	latitude TEXT,
+	longitude TEXT,
+	lawenforcementagency TEXT,
+	cause TEXT,
+	armed TEXT	
+);
+
+SYNOPSIS: Get a list of the people who were killed that match the given race.
+
+QUERY (GET): /people/race/<race_ethnicity>/
+
+RESPONSE: a list of dictionaries where each one describes one person that matches the given race.
+
+EXAMPLE: http://whodied.com/people/race/White
+
+[{'name': Jason Hendrix, 'age': 16 'gender': Male, 'race/ethnicity': White, 'month': February, 'day': 14, 'year': 2015, 'street_address': 1486 Hyde Park Rd, 'city': Essex, 'state': MD, 'latitude': 9.2983478, 'longitude': -76.4401614, 'law_enforcement_agency': Baltimore County Police Department, 'cause': Gunshot, 'armed': Firearm},
+{'name':Roy Day, 'age': 51, 'gender': Male, 'race/ethnicity': White, 'month': February, 'day': 14, 'year': 2015, 'street_address': Gale St, 'city': Laredo, 'state': TX, 'latitude': 27.554155, 'longitude': -99.478091, 'law_enforcement_agency': Laredo Police Department, 'cause': Gunshot, 'armed': Knife}]
+
