@@ -1,0 +1,1 @@
+clang  -g   CMakeFiles/interpreter.dir/src/interpreter.c.o CMakeFiles/interpreter.dir/src/main.c.o ../lib/linkedlist.o ../lib/talloc.o ../lib/tokenizer.o ../lib/parser.o  -o interpreter 

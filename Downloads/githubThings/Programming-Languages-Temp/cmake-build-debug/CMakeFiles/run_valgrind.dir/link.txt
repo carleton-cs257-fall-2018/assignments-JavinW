@@ -1,0 +1,1 @@
+clang  -g   CMakeFiles/run_valgrind.dir/src/interpreter.c.o CMakeFiles/run_valgrind.dir/tests/run_valgrind.c.o ../lib/linkedlist.o ../lib/talloc.o ../lib/tokenizer.o ../lib/parser.o  -o run_valgrind 

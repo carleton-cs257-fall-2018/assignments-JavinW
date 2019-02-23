@@ -1,0 +1,1 @@
+clang  -g   CMakeFiles/test_valgrind.dir/src/interpreter.c.o CMakeFiles/test_valgrind.dir/unity/unity.c.o CMakeFiles/test_valgrind.dir/tests/test_valgrind.c.o ../lib/linkedlist.o ../lib/talloc.o ../lib/tokenizer.o ../lib/parser.o  -o test_valgrind 

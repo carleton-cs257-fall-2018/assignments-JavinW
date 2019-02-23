@@ -1,0 +1,1 @@
+clang  -g   CMakeFiles/tests.dir/src/interpreter.c.o CMakeFiles/tests.dir/unity/unity.c.o CMakeFiles/tests.dir/tests/test.c.o ../lib/linkedlist.o ../lib/talloc.o ../lib/tokenizer.o ../lib/parser.o  -o tests 
